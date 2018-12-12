@@ -35,3 +35,14 @@ $ git clone git@github.com:Automattic/vip-go-mu-plugins.git --recursive wp-conta
 ```
 
 3. Syncronize the DB
+
+## Troubleshooting
+
+### Issue with some containers
+Check the status of the containers using `$ docker-compose ps`.
+
+### Remove all the containers
+In case something went wrong and you want to start over, you can use `$ docker-compose down --volumes` to remove all.
+
+### Logging
+Our `docker-compose` is running in background, if you want to check the logs use `$docker-compose logs wordpress`

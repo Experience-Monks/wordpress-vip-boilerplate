@@ -7,7 +7,12 @@ This repository provides a local docker-based environment for WP VIP Go. It incl
 ### Docker Set up
 
 1. Clone or fork this repository
-2. Create a `.env` file base on the `.env.template`
+
+```
+$ git clone https://github.com/Jam3/docker-wordpress-vip-go.git [project-name]
+```
+
+2. Create a `.env` file based on the `.env.template`
 3. Add the local url, the same that `LOCAL_DEV_DOMAIN`, to your `/etc/hosts` file:
 
 ```
@@ -16,22 +21,27 @@ This repository provides a local docker-based environment for WP VIP Go. It incl
 
 4. Run `$ docker-compose up -d`
 
+You can check out the logs of the installation using `$ docker-compose logs -f`
+
 ### Install WordPress
 
-Navigate to http://example.local/ and manually install WordPress. After the installation is done, ~5min, a new folder `wp-container` will appear in the repository.
+Navigate to http://example.local/ and manually install WordPress. After the installation is done, ~1min, a new folder `wp-container` will appear in the repository.
 
 ### Setup Repository
 
-1. Go to `/wp-container/wp-content` and remove everything inside and clone your project repository
+1. Go to `/wp-container` and remove the folder `wp-content` and clone your project repository
 
 ```
-$ git clone [github-url] .
+$ cd /wp-container
+$ rm -rf wp-content
+$ git clone [github-url] wp-content
 ```
 
 2. Install the vip mu-plugins
 
 ```
-$ git clone git@github.com:Automattic/vip-go-mu-plugins.git --recursive wp-container/wp-content/mu-plugins/
+$ cd /wp-content
+$ git clone https://github.com/Automattic/vip-go-mu-plugins.git --recursive mu-plugins/
 ```
 
 3. Syncronize the DB

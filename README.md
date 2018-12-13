@@ -31,6 +31,8 @@ Navigate to http://example.local/ and manually install WordPress. After the inst
 
 1. Go to `/wp-container` and remove the folder `wp-content` and clone your project repository
 
+Note: If you repository doesn't include the default theme `twentynineteen` you will need to keep it in the folder `wp-content`
+
 ```
 $ cd /wp-container
 $ rm -rf wp-content

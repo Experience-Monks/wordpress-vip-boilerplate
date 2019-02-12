@@ -25,6 +25,25 @@ services:
       back:
         aliases:
           - "${LOCAL_DEV_DOMAIN}"
+  wp-cli:
+    image: "wordpress:cli-php${PHP_VERSION:-7.2}"
+    restart: "on-failure"
+    volumes:
+      - ./wp-container:/var/www/html
+      - ./init.sh:/var/www/html/init.sh
+    command: /var/www/html/init.sh
+    depends_on:
+      - db
+      - wordpress
+    networks:
+      - back
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      LOCAL_DEV_DOMAIN: "$LOCAL_DEV_DOMAIN"
+      WP_SITE_TITLE: "$WP_SITE_TITLE"
+      WP_ADMIN_USER: "$WP_ADMIN_USER"
+      WP_ADMIN_PASSWORD: "$WP_ADMIN_PASSWORD"
+      WP_ADMIN_EMAIL: "$WP_ADMIN_EMAIL"
   phpmyadmin:
     depends_on:
       - db

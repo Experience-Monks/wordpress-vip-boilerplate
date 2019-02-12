@@ -53,13 +53,9 @@ $ git clone https://github.com/Jam3/docker-wordpress-vip-go.git [project-name]
 
 You can check out the logs of the installation using `$ docker-compose logs -f`
 
-### Install WordPress
-
-Navigate to http://example.local/ and manually install WordPress. After the installation is done, ~1min, a new folder `wp-container` will appear in the repository.
-
 ### Setup Repository
 
-1. Go to `/wp-container` and remove the folder `wp-content` and clone your project repository
+1. Go to `/wp-container`, remove the folder `wp-content` and clone your project repository
 
 Note: If you repository doesn't include the default theme `twentynineteen` you will need to keep it in the folder `wp-content`
 

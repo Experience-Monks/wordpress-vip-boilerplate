@@ -11,25 +11,23 @@ This repository provides a local docker-based environment for WP VIP Go. It incl
         ```bash
         [user]$ sudo yum update -y
         [user]$ sudo yum install -y docker
+        [user]$ sudo service docker start
+        [user]$ sudo usermod -aG docker user
         ```
-2. Start docker service
-    ```bash
-    [user]$ sudo service docker start
-    [user]$ sudo usermod -aG docker user
-    ```
-    * Logout from the system and login again to apply last change.
-3. In order to verify docker installation:
+        * Logout from the system and login again to apply last change.
+
+2. In order to verify docker installation:
     ```bash
     [user]$ docker info
     ```
-4. Install Docker Compose
+3. Install Docker Compose
     * Mac OS: Docker already include Compose
     * Centos or Amazon Linux:
         ```bash
         [user]$ sudo curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         sudo chmod +x /usr/local/bin/docker-compose
         ```
-5. In order to verify docker-compose installation:
+4. In order to verify docker-compose installation:
     ```bash
     [user]$ docker-compose --version
     ```
@@ -38,6 +36,7 @@ This repository provides a local docker-based environment for WP VIP Go. It incl
 
 1. Clone this repository
 2. Create a `.env` file based on the `.env.template`
+3. Move to the folder where this repository was cloned `$ cd docker-wordpress-vip-go`
 3. Run `$ docker-compose up -d`
 4. Run `$ ./local_init.sh`
 

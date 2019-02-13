@@ -30,7 +30,7 @@ services:
     restart: "on-failure"
     volumes:
       - ./wp-container:/var/www/html
-      - ./init.sh:/var/www/html/init.sh
+      - ./docker_init.sh:/var/www/html/init.sh
     command: /var/www/html/init.sh
     depends_on:
       - db

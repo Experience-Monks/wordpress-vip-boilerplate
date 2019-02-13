@@ -1,3 +1,6 @@
+#!/bin/bash
+
+echo "initializing..."
 #installing wp
 if $(wp core is-installed); then
     echo "wp installed"

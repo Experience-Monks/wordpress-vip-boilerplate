@@ -36,48 +36,26 @@ This repository provides a local docker-based environment for WP VIP Go. It incl
 
 ### Docker Set up
 
-1. Clone or fork this repository
-
-```
-$ git clone https://github.com/Jam3/docker-wordpress-vip-go.git [project-name]
-```
-
+1. Clone this repository
 2. Create a `.env` file based on the `.env.template`
-3. Add the local url, the same that `LOCAL_DEV_DOMAIN`, to your `/etc/hosts` file:
+3. Run `$ docker-compose up -d`
+4. Run `$ ./local_init.sh`
 
-```
-127.0.0.1 localhost example.local
-```
-
-4. Run `$ docker-compose up -d`
-
+The script will clone your repository and replace it with wp-content folder
 You can check out the logs of the installation using `$ docker-compose logs -f`
 
 ### Setup Repository
 
-1. Go to `/wp-container`, remove the folder `wp-content` and clone your project repository
-
-Note: If you repository doesn't include the default theme `twentynineteen` you will need to keep it in the folder `wp-content`
-
-```
-$ cd /wp-container
-$ rm -rf wp-content
-$ git clone [github-url] wp-content
-```
-
-2. Install the vip mu-plugins
-
-```
-$ cd /wp-content
-$ git clone https://github.com/Automattic/vip-go-mu-plugins.git --recursive mu-plugins/
-```
-
-3. Syncronize the DB
+1. Syncronize the DB
 
 ## Troubleshooting
 
 ### Issue with some containers
 Check the status of the containers using `$ docker-compose ps`.
+
+### Stopping containers
+In the same folder where `docker-compose up -d` was executed do `docker-compose stop` the container will be stooped and the system is prepared to up new containers using same ports.
+Using `docker ps` we can see the container running and using `docker stop CONTANINERID` we can stop conatiners individually
 
 ### Remove all the containers
 In case something went wrong and you want to start over, you can use `$ docker-compose down --volumes` to remove all.

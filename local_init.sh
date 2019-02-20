@@ -16,6 +16,7 @@ rm -Rf wp-container/wp-content
 echo 'Cloning repository.....'
 git clone $PROJECT_REPOSITORY_SSH_URL wp-container/wp-content
 
-if $IS_VIP_ENV then
+if $IS_VIP_ENV
+then
     git clone https://github.com/Automattic/vip-go-mu-plugins.git --recursive wp-container/wp-content/mu-plugins
 fi

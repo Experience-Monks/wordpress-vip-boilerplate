@@ -14,7 +14,7 @@ fi
 echo 'Removing wp-content directory.....'
 rm -Rf wp-container/wp-content
 echo 'Cloning repository.....'
-git clone $PROJECT_REPOSITORY_SSH_URL wp-container/wp-content
+git clone $PROJECT_REPOSITORY_SSH_URL wp-container/
 
 if $IS_VIP_ENV
 then

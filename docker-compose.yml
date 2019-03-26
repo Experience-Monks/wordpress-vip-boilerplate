@@ -44,6 +44,8 @@ services:
       WP_ADMIN_USER: "$WP_ADMIN_USER"
       WP_ADMIN_PASSWORD: "$WP_ADMIN_PASSWORD"
       WP_ADMIN_EMAIL: "$WP_ADMIN_EMAIL"
+      WP_IS_MULTISITE: "$WP_IS_MULTISITE"
+      WP_IS_MULTISITE_SUBDOMAIN: "$WP_IS_MULTISITE_SUBDOMAIN"
   phpmyadmin:
     depends_on:
       - db

@@ -7,7 +7,15 @@ if $(wp core is-installed); then
     #returning 0 value marks success
     return 0
 else
-    wp core install --url=$LOCAL_DEV_DOMAIN --title="$WP_SITE_TITLE" --admin_name=$WP_ADMIN_USER --admin_password=$MYSQL_ROOT_PASSWORD --admin_email=$WP_ADMIN_EMAIL
+    if WP_IS_MULTISITE then
+        if WP_IS_MULTISITE_SUBDOMAIN then
+            wp core multisite-install --url=$LOCAL_DEV_DOMAIN --subdomains --title="$WP_SITE_TITLE" --admin_name=$WP_ADMIN_USER --admin_password=$MYSQL_ROOT_PASSWORD --admin_email=$WP_ADMIN_EMAIL --skip-email
+        else
+            wp core multisite-install --url=$LOCAL_DEV_DOMAIN --title="$WP_SITE_TITLE" --admin_name=$WP_ADMIN_USER --admin_password=$MYSQL_ROOT_PASSWORD --admin_email=$WP_ADMIN_EMAIL --skip-email
+        fi
+    else
+        wp core install --url=$LOCAL_DEV_DOMAIN --title="$WP_SITE_TITLE" --admin_name=$WP_ADMIN_USER --admin_password=$MYSQL_ROOT_PASSWORD --admin_email=$WP_ADMIN_EMAIL
+    fi
 fi
 
 #returning non 0 value marks an error, so the container will start again as it has "restart: on-failure"

@@ -36,7 +36,6 @@ This repository provides a local docker-based environment for WP VIP Go. It incl
 
 1. Clone this repository
 2. Create a `.env` file based on the `.env.template`
-3. Move to the folder where this repository was cloned `$ cd docker-wordpress-vip-go`
 3. Run `$ docker-compose up -d`
 4. Run `$ ./local_init.sh`
 

@@ -5,7 +5,7 @@ echo "initializing..."
 if $(wp core is-installed); then
     echo "wp installed"
     #returning 0 value marks success
-    return 0
+    exit 0
 else
     if $WP_IS_MULTISITE
     then
@@ -24,4 +24,4 @@ else
 fi
 
 #returning non 0 value marks an error, so the container will start again as it has "restart: on-failure"
-return 1
+exit 1

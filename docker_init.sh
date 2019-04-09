@@ -4,6 +4,12 @@ echo "initializing..."
 #installing wp
 if $(wp core is-installed); then
     echo "wp installed"
+    if $WP_PROJECT_THEME_FOLDER
+    then
+        echo "mkdir wp-content/themes/$WP_PROJECT_THEME_FOLDER"
+        mkdir wp-content/themes/$WP_PROJECT_THEME_FOLDER
+        wp theme enable $WP_PROJECT_THEME_FOLDER --network
+    fi
     #returning 0 value marks success
     exit 0
 else

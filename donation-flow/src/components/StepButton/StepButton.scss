@@ -1,0 +1,15 @@
+@import "src/style/shared.scss";
+
+$el-color: $yellow;
+
+.StepButton {
+  opacity: 0.9;
+  border-radius: px(40);
+
+  @include font-size(16, 24, -0.5);
+  color: $el-color;
+  @include font-secondary;
+  border: solid 2px $el-color;
+  background-color: transparent;
+  padding: 10px 40px;
+}

@@ -1,0 +1,59 @@
+@import "layout.scss";
+// Variables
+//
+// Add global variables here, color palette, those variables shared by components all applied to global styling
+$images-path: "./assets/images/";
+$padding-sides: 10%;
+$header-height: px(135);
+
+// ====================================================================
+// Breakpoints
+//
+// Window breakpoints
+// ====================================================================
+$layout-tablet: map-get($layout, tablet) + px;
+$layout-medium: map-get($layout, medium) + px;
+$layout-large: map-get($layout, large) + px;
+$layout-xlarge: map-get($layout, xlarge) + px;
+
+// ====================================================================
+// Media selectors
+//
+// Selector variables
+// ====================================================================
+
+$mobile-device: ".mobile &";
+$phone-device: ".phone &";
+$tablet-device: ".tablet &";
+$desktop-device: ".desktop &";
+
+// ====================================================================
+// Base palette
+//
+// Grayscale and brand colors for use across the site.
+// ====================================================================
+$blue: #1068b3;
+
+$white: #fff;
+$yellow: #f1e3bb;
+$dark-blue: #1068b3;
+$purple: #4e3290;
+$black: #140537;
+$grey: #f6f6f6;
+$green: #97b1b7;
+
+// ====================================================================
+// General
+//
+// Global color variables, used usually in sections
+// Global variables used across the web app
+// ====================================================================
+$page-bg-color: $white;
+$element-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.04);
+$generic-fonts: Helvetica, Arial, sans-serif;
+$opacity-layer: 0.3;
+
+// ====================================================================
+// List of z-index element
+// ====================================================================
+$elements: header;

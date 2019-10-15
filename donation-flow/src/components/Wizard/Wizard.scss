@@ -1,0 +1,19 @@
+@import "src/style/shared.scss";
+
+.Wizard {
+  margin: 0 10% px(50);
+
+  padding-bottom: px(50);
+  border-bottom: 2px solid $yellow;
+
+  .admin-skip-steps {
+    position: absolute;
+    right: 10%;
+    bottom: px(50);
+
+    button {
+      color: $yellow;
+      background-color: transparent;
+    }
+  }
+}

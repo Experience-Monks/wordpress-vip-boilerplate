@@ -1,0 +1,35 @@
+// Fonts
+//
+// Location of all the font-families and font-related css
+//
+// Best practices:
+// 1. Avoid load as many fonts as possible, e.x font styles, font families
+// 2. Optimize the font, remove the characters set that the site won't use: languages
+// 3. Include the unicode range in case you couldn't remove the characters. Included just Latin by default
+// 4. Change fonts just changing the font-weight
+
+$base-path: "../assets/fonts/";
+
+@font-face {
+  font-family: "KievitPro-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("KievitPro Regular"), local("KievitPro-Regular"), url("#{$base-path}KievitPro-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "KievitPro-Bold";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("KievitPro Bold"), local("KievitPro-Bold"), url("#{$base-path}KievitPro-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "NeueHaasUnica-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("NeueHaasUnica Regular"), local("NeueHaasUnica-Regular"), url("#{$base-path}NeueHaasUnica-Regular.ttf") format("truetype");
+}

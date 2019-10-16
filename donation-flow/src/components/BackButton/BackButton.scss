@@ -1,0 +1,18 @@
+@import "src/style/shared.scss";
+
+.BackButton {
+  @include flex-column;
+  @include flex-center-vert;
+  cursor: pointer;
+
+  .text {
+    color: $yellow;
+    margin-top: 15px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    text-transform: uppercase;
+    opacity: 0.6;
+    @include font-secondary;
+    @include font-size(12, 15, 0.5);
+  }
+}

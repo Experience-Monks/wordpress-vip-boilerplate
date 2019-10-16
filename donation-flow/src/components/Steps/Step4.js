@@ -1,45 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+
+import StepTitle from "../StepTitle/StepTitle";
+import StepButton from "../StepButton/StepButton";
 import { FormContext } from "../../context/FormContext";
 import formData from "../../data";
+import "./Step4.scss";
 
-export function Step4({ title }) {
-  const { dispatch } = useContext(FormContext);
+export default function Step4() {
+  const { state, dispatch } = useContext(FormContext);
+  const [donationHonour, setDonationHonour] = useState(state.donation_honour);
 
-  function handleChange(e) {
-    dispatch({ type: "update-donation-honour", donation_honour: e.target.value });
+  function nextStep(value) {
+    dispatch({ type: "update-donation-honour", donation_honour: value });
+    dispatch({ type: "step-forward" });
   }
 
   return (
-    <>
-      <h2>Step 4 - {title}</h2>
-      <select name="donation" size={formData.gift_type.length} onChange={e => handleChange(e)}>
-        {formData.gift_type.map(type => (
-          <option value={type}>{type}</option>
+    <div className="Step4">
+      <StepTitle text="Is this gift in honour, in memory or in thanks of someone?" />
+      <div className="buttons-container">
+        {formData.donation_honour.map(type => (
+          <StepButton text={type} selected={type === donationHonour} onClick={() => nextStep(type)}></StepButton>
         ))}
-      </select>
-    </>
-  );
-}
-
-export function HonourName({ title }) {
-  const { dispatch } = useContext(FormContext);
-
-  return (
-    <>
-      <h2>Step 4.1 - {title}</h2>
-      <input type="text" onChange={e => dispatch({ type: "update-honour-name", honour_name: e.target.value })}></input>
-      <input type="text" onChange={e => dispatch({ type: "update-honour-last-name", honour_last_name: e.target.value })}></input>
-    </>
-  );
-}
-
-export function HonourMessage({ title }) {
-  const { dispatch } = useContext(FormContext);
-
-  return (
-    <>
-      <h2>Step 4.2 - {title}</h2>
-      <input type="text" onChange={e => dispatch({ type: "update-honour-message", honour_message: e.target.value })}></input>
-    </>
+      </div>
+    </div>
   );
 }

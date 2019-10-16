@@ -26,9 +26,9 @@ export function formReducer(state, action) {
     case "set-step":
       return { ...state, current_step: action.step };
     case "step-forward":
-      return { ...state, current_step: action.step + 1 };
+      return { ...state, current_step: state.current_step + 1 };
     case "step-backward":
-      return { ...state, current_step: action.step - 1 };
+      return { ...state, current_step: state.current_step - 1 };
     // Data handling
     case "update-corporation-name":
       return { ...state, corporation_name: action.corporation_name };

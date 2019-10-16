@@ -1,37 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+
+import StepTitle from "../StepTitle/StepTitle";
+import StepButton from "../StepButton/StepButton";
 import { FormContext } from "../../context/FormContext";
 import formData from "../../data";
+import "./Step2.scss";
 
-export function Step2({ title }) {
+export default function Step2() {
   const { state, dispatch } = useContext(FormContext);
+  const [donationType, setDonationType] = useState(state.donation_type);
 
-  function handleChange(e) {
-    dispatch({ type: "update-donation-type", donation_type: e.target.value });
+  function nextStep(value) {
+    dispatch({ type: "update-donation-type", donation_type: value });
+    dispatch({ type: "step-forward" });
   }
 
   return (
-    <>
-      <h2>Step 2 - {title}</h2>
-      <select name="donation" size={formData.donation_amounts.length} onChange={e => handleChange(e)} value={state.donation_type}>
+    <div className="Step2">
+      <StepTitle text="Is this a personal or corporate donation?" />
+      <div className="buttons-container">
         {formData.donation_types.map(type => (
-          <option value={type}>{type}</option>
+          <StepButton text={type} selected={type === donationType} onClick={() => nextStep(type)}></StepButton>
         ))}
-      </select>
-    </>
-  );
-}
-
-export function CorporationName({ title }) {
-  const { state, dispatch } = useContext(FormContext);
-
-  return (
-    <>
-      <h2>Step 2.1 - {title}</h2>
-      <input
-        type="text"
-        value={state.corporation_name}
-        onChange={e => dispatch({ type: "update-corporation-name", corporation_name: e.target.value })}
-      ></input>
-    </>
+      </div>
+    </div>
   );
 }

@@ -1,0 +1,15 @@
+@import "src/style/shared.scss";
+
+.InputText {
+  width: 100%;
+  @include font-size(25, 28, 0.5);
+  background-color: transparent;
+  color: $yellow;
+  border: 0;
+  @include font-secondary;
+
+  &::placeholder {
+    color: $yellow;
+    opacity: 1;
+  }
+}

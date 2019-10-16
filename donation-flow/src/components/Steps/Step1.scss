@@ -1,48 +1,58 @@
 @import "src/style/shared.scss";
 
+$circle-width: px(120);
+
 .Step1 {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-gap: 40px;
+  .top-portion {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 40px;
 
-  .circle-container {
-    display: flex;
-    flex-wrap: wrap;
+    .circle-container {
+      display: grid;
+      grid-template-columns: repeat(3, $circle-width);
+      grid-gap: 40px;
 
-    .CircleSelect {
-      margin: 0 20px 20px 0;
-      width: 120px;
-      height: 120px;
-      border: solid 2px rgba($yellow, 0.2);
-      @include font-size(30, 30);
-      @include font-bold;
-      color: $yellow;
-      background-color: transparent;
-      border-radius: 50%;
-      @include flex-center;
-      transition: transform 0.125s ease-in;
-
-      &:hover {
-        cursor: pointer;
-      }
-
-      &::before {
-        content: "$";
-      }
-
-      [type="number"] {
-        width: 70%;
-        text-align: center;
+      .CircleSelect {
+        width: $circle-width;
+        height: $circle-width;
+        border: solid 2px rgba($yellow, 0.2);
+        @include font-size(30, 30);
+        @include font-bold;
+        color: $yellow;
         background-color: transparent;
-        border: 0;
-        border-bottom: 1px solid $blue;
-        color: $blue;
-      }
+        border-radius: 50%;
+        @include flex-center;
+        transition: transform 0.125s ease-in;
 
-      &.selected {
-        background-color: $yellow;
-        color: $blue;
-        transform: scale(1.2);
+        &:hover {
+          cursor: pointer;
+        }
+
+        &::before {
+          content: "$";
+        }
+
+        input[type="number"] {
+          width: 80%;
+          text-align: center;
+          background-color: transparent;
+          border: 0;
+          border-bottom: 1px solid $blue;
+          color: $blue;
+          &::-webkit-inner-spin-button,
+          &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+        }
+
+        &.selected,
+        &:hover {
+          background-color: $yellow;
+          color: $blue;
+          transform: scale(1.2);
+        }
       }
     }
   }

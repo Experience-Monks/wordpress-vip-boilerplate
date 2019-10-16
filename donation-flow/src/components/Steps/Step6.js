@@ -1,6 +1,12 @@
 import React, { useContext } from "react";
 import { FormContext } from "../../context/FormContext";
 import CountriesOptions from "./CountriesOptions";
+import CheckBox from "../CheckBox/CheckBox";
+import StepButton from "../StepButton/StepButton";
+import StepTitle from "../StepTitle/StepTitle";
+import InputText from "../InputText/InputText";
+
+import "./Step6.scss";
 
 export default function Step6({ title }) {
   const { state, dispatch } = useContext(FormContext);
@@ -10,57 +16,43 @@ export default function Step6({ title }) {
   }
 
   return (
-    <>
-      <h2>Step 6 - {title}</h2>
+    <div className="Step6">
+      <StepTitle text="Billing Information" />
 
-      <div>
-        <label htmlFor="first_name">First Name</label>
-        <input type="text" id="first_name" name="first_name" value={state.billing_info.first_name} onChange={e => handlePersonalInformation(e)} />
-
-        <label htmlFor="last_name">Last Name</label>
-        <input type="text" id="last_name" name="last_name" value={state.billing_info.last_name} onChange={e => handlePersonalInformation(e)} />
-
-        <label htmlFor="email">Email</label>
-        <input type="email" id="email" name="email" value={state.billing_info.email} onChange={e => handlePersonalInformation(e)} />
-
-        <label htmlFor="address">Address</label>
-        <input type="text" id="address" name="address" value={state.billing_info.address} onChange={e => handlePersonalInformation(e)} />
-
-        <label htmlFor="phone_number">Phone Number</label>
-        <input
-          type="tel"
-          id="phone_number"
-          name="phone_number"
-          value={state.billing_info.phone_number}
-          onChange={e => handlePersonalInformation(e)}
-        />
-
-        <CountriesOptions reducerCallBack={handlePersonalInformation} value={state.billing_info.country} />
-
-        <label htmlFor="city">City</label>
-        <input type="text" id="city" name="city" value={state.billing_info.city} onChange={e => handlePersonalInformation(e)} />
-
-        <label htmlFor="state">State</label>
-        <input type="text" id="state" name="state" value={state.billing_info.state} onChange={e => handlePersonalInformation(e)} />
-
-        <label htmlFor="postal_code">Postal Code</label>
-        <input type="text" id="postal_code" name="postal_code" value={state.billing_info.postal_code} onChange={e => handlePersonalInformation(e)} />
+      <div className="inputs-container">
+        <div className="first-line">
+          <InputText value={state.billing_info["first_name"]} placeholder="First Name" onChange={handlePersonalInformation} name="first_name" />
+          <InputText value={state.billing_info["last_name"]} placeholder="Last Name" onChange={handlePersonalInformation} name="last_name" />
+          <InputText value={state.billing_info["email"]} placeholder="Email" onChange={handlePersonalInformation} name="email" type="email" />
+        </div>
+        <div className="second-line">
+          <InputText value={state.billing_info["address"]} placeholder="Address" onChange={handlePersonalInformation} name="address" />
+          <InputText value={state.billing_info["phone_number"]} placeholder="Phone Number" onChange={handlePersonalInformation} name="phone_number" />
+        </div>
+        <div className="third-line">
+          <CountriesOptions reducerCallBack={handlePersonalInformation} value={state.billing_info.country} />
+          <InputText value={state.billing_info["city"]} placeholder="City" onChange={handlePersonalInformation} name="city" />
+          <InputText value={state.billing_info["state"]} placeholder="State" onChange={handlePersonalInformation} name="state" />
+          <InputText value={state.billing_info["postal_code"]} placeholder="Postal Code" onChange={handlePersonalInformation} name="postal_code" />
+        </div>
       </div>
 
-      <div>
-        <input
-          type="checkbox"
-          selected={state.billing_as_personal}
-          id="frmPersonalInformation"
-          value={state.billing_as_personal}
-          onChange={() => dispatch({ type: "update-billing-as-personal" })}
-        />
-        <label for="frmPersonalInformation">Use as my personal information</label>
+      <CheckBox
+        id="frmPersonalInformation"
+        label="Use as my personal information"
+        onChange={() => dispatch({ type: "update-billing-as-personal" })}
+        checked={state.billing_as_personal}
+      />
+      <CheckBox
+        id="frmIsAnonymous"
+        label="Make an anonymous donation"
+        onChange={() => dispatch({ type: "update-is-anonymous" })}
+        checked={state.is_anonymous}
+      />
+
+      <div className="next-container">
+        <StepButton text="Next" onClick={() => dispatch({ type: "step-forward" })}></StepButton>
       </div>
-      <div>
-        <input type="checkbox" selected={state.is_anonymous} id="frmIsAnonymous" onChange={() => dispatch({ type: "update-is-anonymous" })} />
-        <label for="frmIsAnonymous">Make an anonymous donation</label>
-      </div>
-    </>
+    </div>
   );
 }

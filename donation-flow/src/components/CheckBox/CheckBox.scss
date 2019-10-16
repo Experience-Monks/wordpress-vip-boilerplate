@@ -1,0 +1,35 @@
+@import "src/style/shared.scss";
+
+.CheckBox {
+  display: block;
+  margin-bottom: 20px;
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+
+    & + label {
+      position: relative;
+      cursor: pointer;
+      padding: 0;
+      color: $yellow;
+    }
+
+    & + label:before {
+      content: "";
+      margin-right: 10px;
+      display: inline-block;
+      vertical-align: middle;
+      @include box(px(15));
+
+      background: transparent;
+      border: 2px solid $yellow;
+      box-sizing: content-box;
+      padding: 3px;
+    }
+
+    &:checked + label:before {
+      background-color: $yellow;
+    }
+  }
+}

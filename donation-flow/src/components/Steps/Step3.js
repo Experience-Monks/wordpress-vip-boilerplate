@@ -1,22 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+
+import StepTitle from "../StepTitle/StepTitle";
+import StepButton from "../StepButton/StepButton";
 import { FormContext } from "../../context/FormContext";
 import formData from "../../data";
+import "./Step3.scss";
 
 export default function Step3({ title }) {
   const { state, dispatch } = useContext(FormContext);
+  const [donationFrecuency, setDonationFrecuency] = useState(state.donation_frecuency);
 
-  function handleChange(e) {
-    dispatch({ type: "update-donation-frecuency", donation_frecuency: e.target.value });
+  function nextStep(value) {
+    dispatch({ type: "update-donation-frecuency", donation_frecuency: value });
+    dispatch({ type: "step-forward" });
   }
 
   return (
-    <>
-      <h2>Step 3 - {title}</h2>
-      <select name="donation" size={formData.donation_frecuency.length} onChange={e => handleChange(e)}>
+    <div className="Step3">
+      <StepTitle text="Is this a monthly or a one time donation?" />
+      <div className="buttons-container">
         {formData.donation_frecuency.map(frecuency => (
-          <option value={frecuency}>{frecuency}</option>
+          <StepButton text={frecuency} selected={frecuency === donationFrecuency} onClick={() => nextStep(frecuency)}></StepButton>
         ))}
-      </select>
-    </>
+      </div>
+    </div>
   );
 }

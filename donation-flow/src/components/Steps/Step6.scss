@@ -1,0 +1,25 @@
+@import "src/style/shared.scss";
+
+.Step6 {
+  .inputs-container {
+    margin-bottom: 30px;
+
+    .first-line {
+      display: grid;
+      grid-template-columns: 1fr 1fr 2fr;
+    }
+    .second-line {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+    }
+    .third-line {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    > div > * {
+      margin-bottom: 30px;
+      margin-right: 20px;
+    }
+  }
+}

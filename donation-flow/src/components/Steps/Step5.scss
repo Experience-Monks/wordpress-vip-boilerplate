@@ -1,0 +1,34 @@
+@import "src/style/shared.scss";
+
+.Step5 {
+  .main-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 20px;
+
+    .buttons-container {
+      @include flex-column;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      > * {
+        width: 180px;
+        margin-bottom: 20px;
+      }
+    }
+
+    .inputs-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      > * {
+        margin-bottom: px(80);
+      }
+    }
+  }
+
+  .next-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

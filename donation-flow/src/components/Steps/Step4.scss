@@ -1,0 +1,12 @@
+@import "src/style/shared.scss";
+
+.Step4 {
+  .buttons-container {
+    display: flex;
+    justify-content: flex-end;
+
+    > * {
+      margin-left: 20px;
+    }
+  }
+}

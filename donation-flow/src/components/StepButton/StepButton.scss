@@ -1,9 +1,9 @@
 @import "src/style/shared.scss";
 
 $el-color: $yellow;
+$el-color-blocked: rgba($yellow, 0.5);
 
 .StepButton {
-  opacity: 0.9;
   border-radius: px(40);
 
   @include font-size(16, 24, -0.5);
@@ -12,4 +12,15 @@ $el-color: $yellow;
   border: solid 2px $el-color;
   background-color: transparent;
   padding: 10px 40px;
+
+  &:disabled {
+    color: $el-color-blocked;
+    border-color: $el-color-blocked;
+  }
+
+  &.selected,
+  &:hover {
+    background-color: $yellow;
+    color: $blue;
+  }
 }
